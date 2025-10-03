@@ -5,7 +5,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -40,4 +40,10 @@ Route::get('/pcr', function () {
 route::get('/home',[HomeController::class,'index']);
 route::post('/home', [HomeController::class, 'signup']);
 route::get('/pegawai',[PegawaiController::class,'index']);
+
+// Menampilkan halaman login (GET)
+Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
+
+// Memproses form login (POST)
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
 
